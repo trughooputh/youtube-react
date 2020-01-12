@@ -5,7 +5,7 @@ import YTSearch from 'youtube-api-search';
 
 import SearchBar from './components/search-bar';
 import List from './components/list';
-//import Item from './components/item';
+// import Item from './components/item';
 import Player from './components/player';
 
 import {YTConfig} from './config/youtube';
@@ -23,11 +23,11 @@ class App extends React.Component {
         term: keyword
       }, (videos) => {
         this.setState({videos});
-        console.dir(videos);
+        // console.dir(videos);
     });
   }
   render () {
-    const videoSearch = _.debounce((keyword) => { this._videosSearch(keyword) }, 200);
+    const videoSearch = _.debounce(keyword => { this._videosSearch(keyword) }, 200);
     return (
         <div>
           <SearchBar keyword='' title='Youtube' placeholder='Search a video' search={videoSearch} />
@@ -38,4 +38,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('#container'));
+ReactDOM.render(
+  <App />, 
+  document.querySelector('#container')
+);
